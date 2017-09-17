@@ -28,12 +28,13 @@ users.subscribe( userNames => {
 		if( userName === localUserName ) return;
 		connections[ userName ] = new Connection( userName );
 	})
-
+/*
 	for( var userName in connections ) {
 		if( userNames.indexOf( userName ) === -1 ) {
 			connections[ userName ].destroy();
 		}
 	}
+	*/
 });
 
 const log = msg => {
@@ -59,7 +60,7 @@ class Connection{
 		this._p2pConnection.on( 'connect', this._onConnect.bind( this ) );
 		this._p2pConnection.on( 'close', this._onClose.bind( this ) );
 		this._p2pConnection.on( 'data', this._onData.bind( this ) );
-		setTimeout( this._checkConnected.bind( this ), 7000 );
+		//setTimeout( this._checkConnected.bind( this ), 7000 );
 	}
 
 	processSignal( signal ) {
